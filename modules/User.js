@@ -71,8 +71,14 @@ router.get('/getCategory',(request,response)=>{
 router.get('/getProduct',(request,response)=>{
     Product.find()
     .then(result => {
-        const queryResult = result;
-        console.log(queryResult)
+        return response.status(200).send({
+            result: result
+        })
+    })
+    .catch(error=>{
+        return response.status(200).send({
+            result: 'save that bai'
+        })
     })
 })
 module.exports = router;
